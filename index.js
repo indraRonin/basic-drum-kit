@@ -1,9 +1,16 @@
 var numOfDrumButtons = document.querySelectorAll(".drum").length;
+
 for (var i=0; i<numOfDrumButtons; i++){
 document.querySelectorAll(".drum")[i].addEventListener("click", function(){
-    var buttonInnerHTML = this.innerHTML;
-    console.log(this);
-    switch (buttonInnerHTML) {
+var buttonInnerHTML = this.innerHTML;
+drumSound(buttonInnerHTML)});
+}
+
+document.addEventListener("keydown", function(event){
+drumSound(event.key)});
+
+function drumSound(key){
+    switch (key) {
         case "w":
             var audioCymbal = new Audio('./sounds/tom-1.mp3');
             audioCymbal.play();
@@ -42,5 +49,4 @@ document.querySelectorAll(".drum")[i].addEventListener("click", function(){
         default:
             break;
     }
-});
 }
